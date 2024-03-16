@@ -15,7 +15,7 @@ pip install scrapy mysql-connector-python
 To execute the spider, use the following command:
 
 ```console
-scrapy runspider sahib_scrapy.py
+scrapy runspider emlak_scrapy.py
 ```
 
 ### Save Products to SQL
