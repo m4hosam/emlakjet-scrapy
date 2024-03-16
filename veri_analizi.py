@@ -35,5 +35,5 @@ for obj in data:
     extracted_data.append(extracted_obj)
 
 # Write the extracted data to a new JSON file
-with open('extracted_data.json', 'w', encoding='utf-8') as output_file:
+with open('evler_analizi.json', 'w', encoding='utf-8') as output_file:
     json.dump(extracted_data, output_file, ensure_ascii=False, indent=2)

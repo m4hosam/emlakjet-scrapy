@@ -6,7 +6,7 @@ import json
 
 class EmlakJetSpider(scrapy.Spider):
     name = 'emlakjet'
-    start_urls = ['https://www.emlakjet.com/satilik-konut/kocaeli/{}/'.format(i) for i in range(1, 5)]
+    start_urls = ['https://www.emlakjet.com/satilik-konut/kocaeli/{}/'.format(i) for i in range(1, 2)]
     ev_links = []
     ev_detaylar = []
     def parse(self, response):
