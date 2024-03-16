@@ -9,11 +9,16 @@ db_connection = mysql.connector.connect(
     database='emlakjet'
 )
 
+
 # Create a cursor object to interact with the database
 cursor = db_connection.cursor()
 
+# Clear all data from the table before inserting new data
+clear_query = "DELETE FROM Evler"
+cursor.execute(clear_query)
+
 # Open the JSON file and load data
-with open("extracted_data.json", "r", encoding="utf-8") as file:
+with open("evler_analizi.json", "r", encoding="utf-8") as file:
     extracted_data = json.load(file)
 
 # Iterate through each object in the JSON array and insert into the database
