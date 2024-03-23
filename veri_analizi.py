@@ -1,5 +1,5 @@
 import json
-
+import csv
 # Open and read the JSON file
 with open('evler.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
@@ -9,7 +9,6 @@ keys_to_extract = [
     "url",
     "İlan Güncelleme Tarihi",
     "İlan Oluşturma Tarihi",
-    "Kategorisi",
     "Net Metrekare",
     "Oda Sayısı",
     "Bulunduğu Kat",
@@ -26,6 +25,19 @@ keys_to_extract = [
     "price"
 ]
 
+keys_to_extract_model = [
+    "İlan Güncelleme Tarihi",
+    "Net Metrekare",
+    "Oda Sayısı",
+    "Bulunduğu Kat",
+    "Banyo Sayısı",
+    "Binanın Yaşı",
+    "Binanın Kat Sayısı",
+    "Site İçerisinde",
+    "price",
+
+]
+
 # Extract the specified data from each object
 extracted_data = []
 for obj in data:
@@ -37,3 +49,21 @@ for obj in data:
 # Write the extracted data to a new JSON file
 with open('evler_analizi.json', 'w', encoding='utf-8') as output_file:
     json.dump(extracted_data, output_file, ensure_ascii=False, indent=2)
+
+
+# Extract the specified data for model from each object
+extracted_data_model = []
+for obj in data:
+    extracted_obj = {}
+    for key in keys_to_extract_model:
+        extracted_obj[key] = obj.get(key, "Unknown")
+    extracted_data_model.append(extracted_obj)
+
+# Write the extracted data to a CSV file
+csv_file_path = 'evler_analizi_model.csv'
+with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=keys_to_extract_model)
+    writer.writeheader()
+    writer.writerows(extracted_data_model)
+
+print(f"Data saved to {csv_file_path}")
