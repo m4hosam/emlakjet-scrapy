@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
-
+from sklearn.metrics import mean_squared_error
 
 # Mean Absolute Error: 861519.7672479624
 # The predicted price for the given house is: 4790586.666666667
@@ -32,7 +32,13 @@ predictions = model.predict(X_test)
 print(f"Mean Absolute Error: {mean_absolute_error(y_test, predictions)}")
 
 # Test the model with the given house data
-house_data = {'Net Metrekare': 150, 'Oda Sayısı': '3+2', 'Bulunduğu Kat': '3.Kat', 'Banyo Sayısı': 1, 'Binanın Yaşı': '0 (Yeni)', 'Binanın Kat Sayısı': 3, 'Site İçerisinde': 'Hayır'}
+house_data = {'Net Metrekare': 100,
+            'Oda Sayısı': '1+1',
+            'Bulunduğu Kat': '2.Kat',
+            'Banyo Sayısı': 1,
+            'Binanın Yaşı': '0 (Yeni)',
+            'Binanın Kat Sayısı': 3,
+            'Site İçerisinde': 'Hayır'}
 house_data = pd.DataFrame(house_data, index=[0])
 
 # Preprocess the house data
@@ -43,4 +49,8 @@ for column in house_data.columns:
 
 # Predict the house price
 predicted_price = model.predict(house_data)
+
+# Evaluate the model
+# mse = mean_squared_error(y_test, predictions)
+# print(f'Mean Squared Error: {mse}')
 print(f"The predicted price for the given house is: {predicted_price[0]}")
