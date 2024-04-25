@@ -1,5 +1,6 @@
 # python -m venv venv
 # .\venv\Scripts\activate
+
 # source ./venv/Scripts/activate
 scrapy runspider emlak_scrapy.py
 python veri_analizi.py

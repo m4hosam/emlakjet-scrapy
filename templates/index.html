@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Price Predictor</title>
+  </head>
+  <body>
+    <h2>House Price Predictor</h2>
+    <form action="/predict" method="post">
+      <label for="Net Metrekare">Net Metrekare:</label><br />
+      <input
+        type="text"
+        id="Net Metrekare"
+        name="Net Metrekare"
+        value="200"
+      /><br />
+      <label for="Oda Sayısı">Oda Sayısı:</label><br />
+      <select id="Oda Sayısı" name="Oda Sayısı">
+        <option value="3">3+1</option>
+        <option value="2">2+1</option>
+        <option value="4">4+1</option>
+        <option value="1">1+1</option>
+        <option value="5">5+1</option>
+        <option value="1">1 Oda</option>
+        <option value="4">4+2</option>
+        <option value="5">5+2</option>
+        <option value="6">6+1</option></select
+      ><br />
+      <label for="Bulunduğu Kat">Bulunduğu Kat:</label><br />
+      <input
+        type="text"
+        id="Bulunduğu Kat"
+        name="Bulunduğu Kat"
+        value="2"
+      /><br />
+      <label for="Banyo Sayısı">Banyo Sayısı:</label><br />
+      <input
+        type="text"
+        id="Banyo Sayısı"
+        name="Banyo Sayısı"
+        value="2"
+      /><br />
+      <label for="Binanın Yaşı">Binanın Yaşı:</label><br />
+      <input
+        type="text"
+        id="Binanın Yaşı"
+        name="Binanın Yaşı"
+        value="0"
+      /><br />
+      <label for="Binanın Kat Sayısı">Binanın Kat Sayısı:</label><br />
+      <input
+        type="text"
+        id="Binanın Kat Sayısı"
+        name="Binanın Kat Sayısı"
+        value="3"
+      /><br />
+      <label for="Site İçerisinde">Site İçerisinde:</label><br />
+      <select id="Site İçerisinde" name="Site İçerisinde">
+        <option value="1">Evet</option>
+        <option value="0">Hayır</option></select
+      ><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    {% if predicted_price %}
+    <h3>Predicted Price: {{ predicted_price }}</h3>
+    {% endif %}
+  </body>
+</html>

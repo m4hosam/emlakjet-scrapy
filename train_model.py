@@ -4,6 +4,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
+import pickle
 
 # Mean Absolute Error: 861519.7672479624
 # The predicted price for the given house is: 4790586.666666667
@@ -11,7 +12,7 @@ from sklearn.metrics import mean_squared_error
 # data = pd.read_csv('evler_analizi_model.csv')
 # data['price'] /= 1000000
 
-data = pd.read_csv('cleaned_data_3.csv')
+data = pd.read_csv('cleaned_data.csv')
 
 # Preprocess the data
 for column in data.columns:
@@ -33,6 +34,10 @@ model.fit(X_train, y_train)
 # Evaluate the model
 predictions = model.predict(X_test)
 print(f"Mean Absolute Error: {mean_absolute_error(y_test, predictions)}")
+
+# Export the trained model using pickle
+with open('trained_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
 
 # 'Net Metrekare': 300,    int
 # 'Oda Sayısı': 5.0,  float 5.0 -> 5+1 -> 5
@@ -66,3 +71,5 @@ predicted_price = model.predict(house_data)
 # mse = mean_squared_error(y_test, predictions)
 # print(f'Mean Squared Error: {mse}')
 print(f"The predicted price for the given house is: {predicted_price[0]}")
+
+
