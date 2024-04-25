@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error
 # Mean Absolute Error: 861519.7672479624
 # The predicted price for the given house is: 4790586.666666667
 # Load the data
-data = pd.read_csv('evler_analizi_model.csv')
+data = pd.read_csv('cleaned_data_2.csv')
 
 # Preprocess the data
 for column in data.columns:
@@ -32,7 +32,7 @@ predictions = model.predict(X_test)
 print(f"Mean Absolute Error: {mean_absolute_error(y_test, predictions)}")
 
 # Test the model with the given house data
-house_data = {'Net Metrekare': 100,
+house_data = {'Net Metrekare': 200,
             'Oda Sayısı': '1+1',
             'Bulunduğu Kat': '2.Kat',
             'Banyo Sayısı': 1,
