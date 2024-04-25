@@ -54,5 +54,5 @@ cleaned_data = clean_data(data)
 cleaned_data['price'] /= 1000000
 
 cleaned_data.to_csv('cleaned_data.csv', index=False)
-cleaned_data[:10]
+# cleaned_data[:10]
 data = cleaned_data
