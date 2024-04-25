@@ -8,7 +8,10 @@ from sklearn.metrics import mean_squared_error
 # Mean Absolute Error: 861519.7672479624
 # The predicted price for the given house is: 4790586.666666667
 # Load the data
-data = pd.read_csv('cleaned_data_2.csv')
+# data = pd.read_csv('evler_analizi_model.csv')
+# data['price'] /= 1000000
+
+data = pd.read_csv('cleaned_data_3.csv')
 
 # Preprocess the data
 for column in data.columns:
@@ -31,14 +34,23 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 print(f"Mean Absolute Error: {mean_absolute_error(y_test, predictions)}")
 
+# 'Net Metrekare': 300,    int
+# 'Oda Sayısı': 5.0,  float 5.0 -> 5+1 -> 5
+# 'Bulunduğu Kat': 2,  int -> 2.Kat -> 2
+# 'Banyo Sayısı': 1,  int
+# 'Binanın Yaşı': '0 (Yeni)',  int -> 0 (Yeni) -> 0
+# 'Binanın Kat Sayısı': 3,  int
+# 'Site İçerisinde': 'Hayır'  int -> Hayır -> 0, Evet -> 1
+
+
 # Test the model with the given house data
 house_data = {'Net Metrekare': 200,
-            'Oda Sayısı': '1+1',
-            'Bulunduğu Kat': '2.Kat',
+            'Oda Sayısı': 2.0,
+            'Bulunduğu Kat': 2,
             'Banyo Sayısı': 1,
-            'Binanın Yaşı': '0 (Yeni)',
+            'Binanın Yaşı': 5,
             'Binanın Kat Sayısı': 3,
-            'Site İçerisinde': 'Hayır'}
+            'Site İçerisinde': 0}
 house_data = pd.DataFrame(house_data, index=[0])
 
 # Preprocess the house data

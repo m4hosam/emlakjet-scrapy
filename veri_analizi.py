@@ -1,5 +1,6 @@
 import json
 import csv
+
 # Open and read the JSON file
 with open('evler.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
