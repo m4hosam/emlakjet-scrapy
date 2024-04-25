@@ -5,7 +5,7 @@
   </head>
   <body>
     <h2>House Price Predictor</h2>
-    <form action="/predict" method="post">
+    <form action="/predict" method="post" id="prediction-form">
       <label for="Net Metrekare">Net Metrekare:</label><br />
       <input
         type="text"
@@ -60,8 +60,26 @@
       ><br /><br />
       <input type="submit" value="Submit" />
     </form>
-    {% if predicted_price %}
-    <h3>Predicted Price: {{ predicted_price }}</h3>
-    {% endif %}
+    <div id="predicted-price"></div>
+    <script>
+      document
+        .getElementById("prediction-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from submitting normally
+
+          var form_data = new FormData(this);
+
+          fetch("/predict", {
+            method: "POST",
+            body: form_data,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("predicted-price").innerHTML =
+                "<h3>Predicted Price: " + data + "</h3>";
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
   </body>
 </html>

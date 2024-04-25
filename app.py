@@ -37,9 +37,10 @@ def predict():
 
     # Predict the house price
     predicted_price = loaded_model.predict(house_data)
+    # round the price to 6 points
+    predicted_price_round = round(predicted_price[0], 6)
 
-
-    return render_template('index.html', predicted_price=predicted_price[0])
+    return str(predicted_price_round)
 
 if __name__ == '__main__':
     app.run(debug=True)
