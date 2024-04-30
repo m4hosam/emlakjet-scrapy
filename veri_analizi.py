@@ -24,6 +24,7 @@ keys_to_extract = [
     "Eşya Durumu",
     "Balkon Durumu",
     "Site İçerisinde",
+    "address",
     "price"
 ]
 
@@ -36,6 +37,7 @@ keys_to_extract_model = [
     "Binanın Yaşı",
     "Binanın Kat Sayısı",
     "Site İçerisinde",
+    "address",
     "price",
 
 ]
@@ -77,5 +79,6 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=keys_to_extract_model)
     writer.writeheader()
     writer.writerows(cleaned_data)
+
 
 print(f"Data saved to {csv_file_path}")

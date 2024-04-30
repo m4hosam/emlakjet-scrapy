@@ -6,7 +6,7 @@ import json
 
 class EmlakJetSpider(scrapy.Spider):
     name = 'emlakjet'
-    start_urls = ['https://www.emlakjet.com/satilik-konut/kocaeli/{}/'.format(i) for i in range(1, 50)]
+    start_urls = ['https://www.emlakjet.com/satilik-konut/kocaeli/{}/'.format(i) for i in range(1, 2)]
     ev_links = []
     ev_detaylar = []
     def parse(self, response):
@@ -28,9 +28,13 @@ class EmlakJetSpider(scrapy.Spider):
         # Extracting price
         price = response.css('div._2TxNQv::text').extract_first().strip()
 
+        # Extracting the address using XPath selector
+        address = response.xpath('//div[@class="_3VQ1JB"]/p/text()').get()
+
         # EmlakJetSpider.ev_links.append(price)
         details_dict['url'] = response.url
         details_dict['price'] = price
+        details_dict['address'] = address
         EmlakJetSpider.ev_detaylar.append(details_dict)
         yield details_dict
 

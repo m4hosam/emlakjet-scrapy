@@ -11,7 +11,7 @@ def clean_data(df):
     df['Bulunduğu Kat'].replace('Unknown', '3.Kat')
 
     # Extract the floor number from "Bulunduğu Kat" column
-    df["Bulunduğu Kat"] = df["Bulunduğu Kat"].str.extract('(\d+)', expand=False)
+    df["Bulunduğu Kat"] = df["Bulunduğu Kat"].str.extract('(\\d+)', expand=False)
 
     # Convert "Bulunduğu Kat" column to numeric
     df["Bulunduğu Kat"] = pd.to_numeric(df["Bulunduğu Kat"])
@@ -20,7 +20,7 @@ def clean_data(df):
     df["Binanın Yaşı"] = df["Binanın Yaşı"].astype(str)
 
     # Extract the building age from "Binanın Yaşı" column
-    df["Binanın Yaşı"] = df["Binanın Yaşı"].str.extract('(\d+)', expand=False)
+    df["Binanın Yaşı"] = df["Binanın Yaşı"].str.extract('(\\d+)', expand=False)
 
     # Convert "Binanın Yaşı" column to numeric
     df["Binanın Yaşı"] = pd.to_numeric(df["Binanın Yaşı"])
@@ -32,7 +32,7 @@ def clean_data(df):
     df["Oda Sayısı"] = df["Oda Sayısı"].astype(str)
 
     # Extract the number of rooms from "Oda Sayısı" column
-    df["Oda Sayısı"] = df["Oda Sayısı"].str.extract('(\d+)', expand=False)
+    df["Oda Sayısı"] = df["Oda Sayısı"].str.extract('(\\d+)', expand=False)
 
     # Convert "Oda Sayısı" column to numeric
     df["Oda Sayısı"] = pd.to_numeric(df["Oda Sayısı"])
