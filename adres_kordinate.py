@@ -1,7 +1,7 @@
 import requests
 from google_api_key import google_api_key_secret
 
-def geocode_address(address):
+def get_coordinates(address):
     url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={google_api_key_secret}"
     response = requests.get(url)
     data = response.json()
@@ -18,7 +18,7 @@ def geocode_address(address):
 # Example usage
 if __name__ == "__main__":
     address = "Kocaeli - Gebze - İnönü Mahallesi"
-    latitude, longitude = geocode_address(address)
+    latitude, longitude = get_coordinates(address)
     if latitude and longitude:
         print(f"Latitude: {latitude}, Longitude: {longitude}")
     else:

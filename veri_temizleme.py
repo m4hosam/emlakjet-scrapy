@@ -40,6 +40,9 @@ def clean_data(df):
     # Replace "Yok" with 0 and "6+" with 6 in "Banyo Sayısı" column
     df["Banyo Sayısı"] = df["Banyo Sayısı"].replace({"Yok": 0, "6+": 6})
 
+    # Drop addrress column
+    df = df.drop("address", axis=1)
+
     # Fill NaN values with median of each column
     df = df.fillna(df.median())
 
@@ -52,6 +55,12 @@ data = pd.read_csv("evler_analizi_model.csv")
 cleaned_data = clean_data(data)
 
 cleaned_data['price'] /= 1000000
+
+# make price column the last column
+cols = list(cleaned_data.columns)
+cols.remove('price')
+cols.append('price')
+cleaned_data = cleaned_data[cols]
 
 cleaned_data.to_csv('cleaned_data.csv', index=False)
 # cleaned_data[:10]

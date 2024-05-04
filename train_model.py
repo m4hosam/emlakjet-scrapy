@@ -46,16 +46,21 @@ with open('trained_model.pkl', 'wb') as f:
 # 'Binanın Yaşı': '0 (Yeni)',  int -> 0 (Yeni) -> 0
 # 'Binanın Kat Sayısı': 3,  int
 # 'Site İçerisinde': 'Hayır'  int -> Hayır -> 0, Evet -> 1
+# 'latitude': 40.7401164,  float
+# 'longitude': 29.9581538,  float
 
 
 # Test the model with the given house data
-house_data = {'Net Metrekare': 200,
-            'Oda Sayısı': 2.0,
-            'Bulunduğu Kat': 2,
+house_data = {'Net Metrekare': 130,
+            'Oda Sayısı': 3.0,
+            'Bulunduğu Kat': 1,
             'Banyo Sayısı': 1,
-            'Binanın Yaşı': 5,
+            'Binanın Yaşı':21,
             'Binanın Kat Sayısı': 3,
-            'Site İçerisinde': 0}
+            'Site İçerisinde': 0,
+            'latitude': 40.7401164,
+            'longitude':29.9581538,
+            }
 house_data = pd.DataFrame(house_data, index=[0])
 
 # Preprocess the house data
