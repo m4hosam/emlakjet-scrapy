@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
 import pickle
+from adres_kordinate import get_coordinates
 
 app = Flask(__name__)
 
@@ -20,10 +21,17 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    features = ['Net Metrekare', 'Oda Sayısı', 'Bulunduğu Kat', 'Banyo Sayısı', 'Binanın Yaşı', 'Binanın Kat Sayısı', 'Site İçerisinde']
+    features = ['Net Metrekare', 'Oda Sayısı', 'Bulunduğu Kat', 'Banyo Sayısı', 'Binanın Yaşı', 'Binanın Kat Sayısı', 'Site İçerisinde', 'adres']
     house_data = {}
     for feature in features:
-        house_data[feature] = float(request.form[feature])
+        if feature == 'adres':
+            # Get latitude and longitude from the address
+            address = request.form['adres']
+            latitude, longitude = get_coordinates(address)
+            house_data['latitude'] = latitude
+            house_data['longitude'] = longitude
+        else:
+            house_data[feature] = float(request.form[feature])
 
     house_data = pd.DataFrame(house_data, index=[0])
 
