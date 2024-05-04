@@ -12,7 +12,7 @@ import pickle
 # data = pd.read_csv('evler_analizi_model.csv')
 # data['price'] /= 1000000
 
-data = pd.read_csv('cleaned_data.csv')
+data = pd.read_csv('temiz_veri.csv')
 
 # Preprocess the data
 for column in data.columns:
